@@ -23,13 +23,15 @@ int main() {
 double write(const char *filename)        
 {
     clock_t begin = clock();
+    int i;
 
     FILE *fptr;
     if ((fptr = fopen(filename, "w+")) == NULL) {
         printf("Error while opening the file!");
         exit(1);
     }
-    for (int i = 1; i<100; i++){ fprintf(fptr,"%d\n", i); }
+    for (i = 1; i<100000; i++){ fprintf(fptr,"%d", i); }
+    fprintf(fptr,"\n", i);
     fclose(fptr);
 
     clock_t end = clock();
