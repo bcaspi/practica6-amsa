@@ -2,7 +2,7 @@
 #Swap
 
 ROOT_UID=0
-FILE=/tmp/swap$1
+FILE=/tmp/swap
 BLOCKSIZE=1024
 MINBLOCKS=100
 [ "$UID" -ne "$ROOT_UID" ] && echo "no autoritzat" && exit 1
