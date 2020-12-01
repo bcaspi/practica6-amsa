@@ -7,10 +7,10 @@ double read(const char *filename);
 
 int main() {
     
-    double time_spent_write_ram = write("example.txt");
-    double time_spent_write_sf = write("/dev/sda1/example.txt");
-    double time_spent_read_ram = read("example.txt");
-    double time_spent_read_sf = read("/dev/sda1/example.txt");
+    double time_spent_write_ram = write("example2.txt");
+    double time_spent_write_sf = write("/tmp/ramdisk/example.txt");
+    double time_spent_read_ram = read("example2.txt");
+    double time_spent_read_sf = read("/tmp/ramdisk/example.txt");
 
     printf("%-35s\t %-30lf\n", "Temps escriptura fitxer RAM:", time_spent_write_ram);
     printf("%-35s\t %-30lf\n\n", "Temps escriptura fitxer del sf:", time_spent_write_sf);
@@ -27,11 +27,11 @@ double write(const char *filename)
 
     FILE *fptr;
     if ((fptr = fopen(filename, "w+")) == NULL) {
-        printf("Error while opening the file!");
+        printf("Error while opening the file!\n");
         exit(1);
     }
-    for (i = 1; i<100000; i++){ fprintf(fptr,"%d", i); }
-    fprintf(fptr,"\n", i);
+    for (i = 1; i<100000000; i++){ fprintf(fptr,"%d", i); }
+    fprintf(fptr,"\n");
     fclose(fptr);
 
     clock_t end = clock();
